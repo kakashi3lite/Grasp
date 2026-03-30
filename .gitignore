@@ -1,0 +1,26 @@
+# Xcode / macOS
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+.DS_Store
+
+# Certificates & secrets (never commit)
+*.mobileprovision
+*.p12
+*.cer
+GoogleService-Info.plist
+
+# Runtime / temp
+grasp_vlm_input.jpg
+
+# Large model weights (use Git LFS if added)
+*.gguf
+*.safetensors
+*.bin
+mlx_models/
+
+# NOTE: We intentionally DO NOT ignore:
+# - Grasp.xcodeproj/project.pbxproj
+# - Grasp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+# - *.entitlements, Info.plist
