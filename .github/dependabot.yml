@@ -1,0 +1,8 @@
+# Keeps GitHub Actions up to date (weekly). Safe for a public repo.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5

@@ -7,6 +7,7 @@ Grasp is an iPhone app that turns the camera into a private document and scene v
 [![iOS](https://img.shields.io/badge/iOS-26-007AFF?logo=apple&logoColor=white)](https://developer.apple.com/ios/)
 [![MLX Swift](https://img.shields.io/badge/MLX-Swift-34C759)](https://github.com/ml-explore/mlx-swift)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/kakashi3lite/Grasp/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kakashi3lite/Grasp/actions/workflows/ci.yml)
 
 ---
 
@@ -39,8 +40,8 @@ Source layout: `Grasp/Models`, `Grasp/Managers`, `Grasp/Views`, plus `GraspTests
 
 | | |
 | --- | --- |
-| **Xcode** | 16+ |
-| **SDK** | iOS 26 (as set in the project) |
+| **Xcode** | 26+ (matches `LastUpgradeCheck` / iOS SDK in the project) |
+| **SDK** | iOS 26.x (deployment target is set in the Xcode project) |
 | **Device** | Physical iPhone recommended (camera, Neural Engine). **A17 Pro** or newer is ideal for MLX performance |
 
 ---
@@ -51,6 +52,10 @@ Source layout: `Grasp/Models`, `Grasp/Managers`, `Grasp/Views`, plus `GraspTests
 2. **Open** `Grasp.xcodeproj` in Xcode (Swift Package Manager dependencies resolve via the checked-in `Package.resolved`).  
 3. **Select** your team and a **physical device** for camera and ML workloads.  
 4. **Build and run.** On first launch, the app may **download model weights** over the network; after that, core flows can run without cloud inference.
+
+### Continuous integration
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) builds the app for the **iOS Simulator** and runs **`GraspTests`** on pushes and pull requests to `main`. It uses the **latest Xcode** available on GitHub’s `macos-15` runner; your project targets **iOS 26.4**, so if a hosted runner does not yet ship that SDK, run the same `xcodebuild` command on a Mac with **Xcode 26.4+** or use a self-hosted runner until images catch up.
 
 ---
 

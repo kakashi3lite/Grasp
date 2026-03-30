@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible bug in Grasp (build, tests, or runtime).
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve Grasp. Please include **steps to reproduce** and **expected vs actual** behavior.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: One or two sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. …
+        2. …
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Device model, iOS version, Xcode version (if building from source).
+      placeholder: iPhone 17 Pro, iOS 26.x, Xcode 26.x
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / screenshots (optional)
+      description: OSLog or Console.app snippets if relevant. Do not paste secrets.
+    validations:
+      required: false
