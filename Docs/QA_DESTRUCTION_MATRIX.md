@@ -26,3 +26,8 @@ Five high-risk scenarios. Each should have an automated or manual pass before re
 
 **Goal:** Offline behavior is safe; deep links do not assume network.  
 **How:** Enable Airplane Mode; exercise vault/search and any URL schemes; no blank screens or crashes.
+
+## 6. FIFO queue depth (memory bound)
+
+**Goal:** Rapid capture cannot grow the pending inference queue without limit (`GraspMaxPendingInferenceJobs` in `Configuration/GraspConfiguration.plist`).  
+**How:** Stress-test capture faster than inference; expect a user-visible error once the cap is hit, not jetsam.

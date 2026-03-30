@@ -1,5 +1,6 @@
 import Testing
 import Foundation
+import UIKit
 @testable import Grasp
 
 // MARK: - Grasp V1.0 QA Destruction Tests
@@ -164,5 +165,21 @@ struct GraspTests {
         let e2 = CapturedEntity(thumbnail: Data())
         let results = SemanticSearch.filter([e1, e2], query: "")
         #expect(results.count == 2)
+    }
+
+    // -------------------------------------------------------------------------
+    // MARK: 6. Configuration & errors (Market Wholesomeness / resilience)
+    // -------------------------------------------------------------------------
+
+    /// Queue-full error must surface a user-visible string (alerts, logs).
+    @Test func graspError_inferenceQueueFull_hasDescription() async throws {
+        let err = GraspError.inferenceQueueFull
+        #expect((err.errorDescription ?? "").count > 10)
+    }
+
+    /// Plist-driven defaults must stay sane when keys are present in the host app.
+    @Test func graspAppConfiguration_positiveBounds() async throws {
+        #expect(GraspAppConfiguration.maxPendingInferenceJobs > 0)
+        #expect(!GraspAppConfiguration.mlxModelID.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
     }
 }

@@ -6,11 +6,6 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		A32455E32F79D88600459FA2 /* MLXVLM in Frameworks */ = {isa = PBXBuildFile; productRef = A32455E12F79D88600459FA2 /* MLXVLM */; };
-		A32455E42F79D88600459FA2 /* MLXLMCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A32455E22F79D88600459FA2 /* MLXLMCommon */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXContainerItemProxy section */
 		A32455C12F79D88600459FA2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +22,11 @@
 			remoteInfo = Grasp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXBuildFile section */
+		A32455E32F79D88600459FA2 /* MLXVLM in Frameworks */ = {isa = PBXBuildFile; productRef = A32455E12F79D88600459FA2 /* MLXVLM */; };
+		A32455E42F79D88600459FA2 /* MLXLMCommon in Frameworks */ = {isa = PBXBuildFile; productRef = A32455E22F79D88600459FA2 /* MLXLMCommon */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A32455B12F79D88500459FA2 /* Grasp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Grasp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,11 +204,11 @@
 			);
 			mainGroup = A32455A82F79D88500459FA2;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A32455B22F79D88500459FA2 /* Products */;
 			packageReferences = (
 				A32455E02F79D88600459FA2 /* XCRemoteSwiftPackageReference "mlx-swift-lm" */,
 			);
-			preferredProjectObjectVersion = 77;
-			productRefGroup = A32455B22F79D88500459FA2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -412,6 +412,7 @@
 				DEVELOPMENT_TEAM = KPSY8883WT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Grasp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Grasp uses the camera to scan and capture text, codes, and visual information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -445,6 +446,7 @@
 				DEVELOPMENT_TEAM = KPSY8883WT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Grasp/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Grasp uses the camera to scan and capture text, codes, and visual information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -598,8 +600,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ml-explore/mlx-swift-lm";
 			requirement = {
-				branch = main;
 				kind = branch;
+				branch = main;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

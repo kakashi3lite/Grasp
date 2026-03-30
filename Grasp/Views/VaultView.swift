@@ -10,6 +10,8 @@ struct VaultView: View {
     private var allEntities: [CapturedEntity]
 
     @State private var searchText = ""
+    /// Founder's pledge and ethics (see `Docs/FOUNDERS_PLEDGE.md`).
+    @State private var showAbout = false
 
     var body: some View {
         NavigationStack {
@@ -70,6 +72,19 @@ struct VaultView: View {
                         .font(.system(.headline, design: .monospaced).bold())
                         .foregroundStyle(.white)
                 }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAbout = true
+                    } label: {
+                        Image(systemName: "info.circle")
+                            .foregroundStyle(.white.opacity(0.9))
+                    }
+                    .accessibilityLabel("About Grasp and founder pledge")
+                }
+            }
+            .sheet(isPresented: $showAbout) {
+                AboutGraspView()
+                    .preferredColorScheme(.dark)
             }
             .overlay {
                 if allEntities.isEmpty {

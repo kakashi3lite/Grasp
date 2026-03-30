@@ -11,12 +11,16 @@ enum GraspError: LocalizedError {
     case scannerNotReady
     case modelNotLoaded
     case imageConversionFailed
+    /// FIFO backlog exceeded `GraspMaxPendingInferenceJobs` (see `Grasp/Info.plist`).
+    case inferenceQueueFull
 
     var errorDescription: String? {
         switch self {
         case .scannerNotReady:       "Camera scanner is not ready"
         case .modelNotLoaded:        "Vision model has not finished loading"
         case .imageConversionFailed: "Could not convert the captured image"
+        case .inferenceQueueFull:
+            "Too many items are waiting to process. Wait for the queue to clear or try again."
         }
     }
 }

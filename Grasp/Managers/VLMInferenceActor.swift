@@ -21,7 +21,12 @@ actor VLMInferenceActor {
 
     static let shared = VLMInferenceActor()
 
-    private let manager = MLXVisionManager()
+    private let manager: MLXVisionManager
+
+    /// Use `shared` only. `MLXVisionManager` is created with the plist **model id**.
+    private init() {
+        self.manager = MLXVisionManager(modelID: GraspAppConfiguration.mlxModelID)
+    }
     private var container: ModelContainer?
     private var isLoading = false
 
@@ -71,6 +76,12 @@ actor VLMInferenceActor {
             await Task.yield()
         }
         guard container != nil else { throw GraspError.modelNotLoaded }
+
+        // Bound FIFO depth so rapid capture cannot grow `pending` without limit
+        // (each `WorkItem` retains JPEG bytes until processed).
+        if pending.count >= GraspAppConfiguration.maxPendingInferenceJobs {
+            throw GraspError.inferenceQueueFull
+        }
 
         try await withCheckedThrowingContinuation { continuation in
             pending.append(WorkItem(
