@@ -268,6 +268,16 @@ actor VLMInferenceActor {
         )
         item.expirationDate = .distantFuture
 
-        try? await CSSearchableIndex.default().indexSearchableItems([item])
+        do {
+            try await CSSearchableIndex.default().indexSearchableItems([item])
+            // Privacy: never log title/summary/keywords — only correlation id + payload size.
+            GraspLogger.spotlight.info(
+                "Spotlight index OK id=\(id.uuidString, privacy: .private) thumbnailBytes=\(thumbnailData.count, privacy: .public)"
+            )
+        } catch {
+            GraspLogger.spotlight.error(
+                "Spotlight index failed: \(error.localizedDescription, privacy: .public)"
+            )
+        }
     }
 }

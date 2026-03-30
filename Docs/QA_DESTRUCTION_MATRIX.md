@@ -31,3 +31,8 @@ Five high-risk scenarios. Each should have an automated or manual pass before re
 
 **Goal:** Rapid capture cannot grow the pending inference queue without limit (`GraspMaxPendingInferenceJobs` in `Configuration/GraspConfiguration.plist`).  
 **How:** Stress-test capture faster than inference; expect a user-visible error once the cap is hit, not jetsam.
+
+## 7. Core Spotlight index / de-index observability
+
+**Goal:** Every successful VLM extraction is indexed; vault deletes remove Spotlight entries; failures are visible during QA without guessing.  
+**How:** In **Console.app**, filter **subsystem** `com.grasp.vault` and **category** `spotlight`. After processing a capture, expect a success line (UUID redacted in non-debug streams; thumbnail byte count public). After deleting from the vault, expect a de-index success with a count. If indexing fails, an error line appears—investigate before release.

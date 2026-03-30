@@ -57,6 +57,7 @@ Grasp targets people who want **ownership** over their data: **one-time purchase
 | **Thermal** | `ProcessInfo` notifications → `AsyncStream`; `ThermalMonitor` for SwiftUI |
 | **Persistence** | SwiftData `CapturedEntity`, external thumbnail storage |
 | **Discovery** | Core Spotlight + deep link from system search |
+| **Diagnostics** | On-device `os.Logger` only (subsystem `com.grasp.vault`). The `spotlight` category records index and de-index success or failure—no titles or summaries in log strings (privacy-safe QA in Console.app). |
 
 **Repository layout**
 

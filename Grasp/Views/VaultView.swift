@@ -139,10 +139,19 @@ struct VaultView: View {
         }
         try? modelContext.save()
 
-        // De-index from Core Spotlight (fire-and-forget)
+        // De-index from Core Spotlight (fire-and-forget); log outcome for QA / Console.
         Task {
-            try? await CSSearchableIndex.default()
-                .deleteSearchableItems(withIdentifiers: uuids)
+            do {
+                try await CSSearchableIndex.default()
+                    .deleteSearchableItems(withIdentifiers: uuids)
+                GraspLogger.spotlight.info(
+                    "Spotlight de-index OK count=\(uuids.count, privacy: .public)"
+                )
+            } catch {
+                GraspLogger.spotlight.error(
+                    "Spotlight de-index failed: \(error.localizedDescription, privacy: .public)"
+                )
+            }
         }
     }
 }
