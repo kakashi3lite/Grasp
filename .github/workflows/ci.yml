@@ -27,7 +27,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # Pick Xcode 26.x when available on the runner; otherwise latest (see logs).
       - name: Select Xcode
